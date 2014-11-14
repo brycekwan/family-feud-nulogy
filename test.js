@@ -3,6 +3,22 @@ var _ = require("lodash");
 var board = new five.Board();
 
 
+var bothReleased = function () { console.log("Both buttons released"); }
+
+var buttonReleaser = (function (callback) {
+  var buttons = [];
+
+  function isReleased (button) {
+    return !button.isDown;
+  }
+
+  return {
+    release: function () { if(_.every(buttons, isReleased)) { callback(); } },
+    addButton: function (button) { buttons.push(button) }
+  };
+})(bothReleased);
+
+
 var buttonsConfig = [
   {
     pin: 8,
@@ -11,7 +27,7 @@ var buttonsConfig = [
     name: "button 1",
     events: {
       hold: function () { console.log("Button 1 is pressed"); },
-      // up: function () { console.log("Button 1 is released"); }, // Disabled because it is almost always triggered
+      up: buttonReleaser.release
     }
   }, {
     pin: 9,
@@ -20,7 +36,7 @@ var buttonsConfig = [
     name: "button 2",
     events: {
       hold: function () { console.log("Button 2 is pressed"); },
-      // up: function () { console.log("Button 2 is released"); },
+      up: buttonReleaser.release
     }
   }
 ];
@@ -33,23 +49,10 @@ var newButton = function (config) {
   _.forOwn(config.events, function (callback, eventName) {
     button.on(eventName, callback);
   });
+  buttonReleaser.addButton(button);
 
   return button;
 };
-
-
-// Debug function to check the status of the buttons
-function checkButtonStatus(button) {
-  var str = button.name + " ";
-
-  if(button.isDown) {
-    str += "is down";
-  } else {
-    str += "is up";
-  }
-
-  console.log(str);
-}
 
 
 board.on("ready", function() {
@@ -61,10 +64,6 @@ board.on("ready", function() {
   // allows direct command line access
   board.repl.inject({
     buttons: buttons,
-    buttonsConfig: buttonsConfig,
-    checkButtonStatus: checkButtonStatus,
-    _: _
+    buttonsConfig: buttonsConfig
   });
-
-  _.map(buttons, checkButtonStatus);
 });
