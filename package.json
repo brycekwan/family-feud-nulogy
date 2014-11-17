@@ -1,0 +1,24 @@
+{
+  "name": "family-feud-nulogy",
+  "version": "0.0.0",
+  "description": "Program is using Johnny Five for interraction with the arduino.  Johnny Five is a node interface for interacting with the arduino, and allows for a good degree of control which is more efficient than using serial communications.",
+  "main": "test.js",
+  "dependencies": {
+    "johnny-five": "~0.8.24",
+    "lodash": "~2.4.1",
+    "firebase": "~2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajrkerr/family-feud-nulogy.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/ajrkerr/family-feud-nulogy/issues"
+  }
+}

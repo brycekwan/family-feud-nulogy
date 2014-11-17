@@ -43,6 +43,7 @@ var buttonsConfig = [
 
 
 var newButton = function (config) {
+  console.log(config);
   var button = new five.Button(_.omit(config, ["events", "name"]));
 
   button.name = config.name;
