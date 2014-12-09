@@ -40,6 +40,15 @@ var buttonsConfig = [
       hold: function () { console.log("Button 2 is pressed"); sendButton("2") },
       up: buttonReleaser.release
     }
+  } , {
+    pin: 10,
+    holdTime: 200,
+    isPullup: true,
+    name: "button 3",
+    events: {
+      hold: function () { console.log("Button 3 is pressed"); sendButton("3") },
+      up: buttonReleaser.release
+    }
   }
 ];
 
