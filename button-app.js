@@ -67,7 +67,7 @@ var newButton = function (config) {
 };
 
 var sendButton = _.throttle(function(buttonId) {
-  var stream = fs.createReadStream("/home/brycek/src/family-feud-nulogy/ff-ringin.wav");
+  var stream = fs.createReadStream("ff-ringin.wav");
   var speaker = new Speaker({
     channels: 2,
     bitDepth: 8,
