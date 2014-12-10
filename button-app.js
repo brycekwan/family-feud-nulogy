@@ -28,7 +28,7 @@ var buttonsConfig = [
     isPullup: true,
     name: "button 1",
     events: {
-      hold: function () { console.log("Button 1 is pressed"); sendButton("1") },
+      down: function () { console.log("Button 1 is pressed"); sendButton("1") },
       up: buttonReleaser.release
     }
   }, {
@@ -37,7 +37,7 @@ var buttonsConfig = [
     isPullup: true,
     name: "button 2",
     events: {
-      hold: function () { console.log("Button 2 is pressed"); sendButton("2") },
+      down: function () { console.log("Button 2 is pressed"); sendButton("2") },
       up: buttonReleaser.release
     }
   } , {
@@ -46,7 +46,7 @@ var buttonsConfig = [
     isPullup: true,
     name: "button 3",
     events: {
-      hold: function () { console.log("Button 3 is pressed"); sendButton("3") },
+      down: function () { console.log("Button 3 is pressed"); sendButton("3") },
       up: buttonReleaser.release
     }
   }
